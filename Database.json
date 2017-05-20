@@ -1,5 +1,28 @@
 {
-  "pending": [],
-  "in_progress": [],
+  "pending": [
+    {
+      "id": 1,
+      "name": "Groceries shopping",
+      "description": "Buy milk, bread and butter",
+      "estimate": 12,
+      "state": "pending"
+    },
+    {
+      "name": "new pending task",
+      "description": "Testing",
+      "estimate": 1,
+      "state": "pending",
+      "id": 2
+    }
+  ],
+  "in_progress": [
+    {
+      "name": "Task tracker",
+      "description": "Working on task tracker assignment",
+      "estimate": 2.5,
+      "state": "in_progress",
+      "id": 1
+    }
+  ],
   "completed": []
 }

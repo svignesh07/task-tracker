@@ -16,7 +16,8 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   title: string;
   task: Task = new Task();
   add_task_path = '';
-  private subscription: any;
+  private getTaskSubscription: any;
+  private getTasksSubscription: any;
 
   constructor(
     fb: FormBuilder,
@@ -35,10 +36,10 @@ export class TaskFormComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.subscription = this.route.params.subscribe(params => {
+    this.getTaskSubscription = this.route.params.subscribe(params => {
 
       const task_id = params['id']
-          , task_type = params['task_type'];
+        , task_type = params['task_type'];
 
       this.title = task_id ? 'Edit Task' : 'New Task';
 
@@ -46,22 +47,24 @@ export class TaskFormComponent implements OnInit, OnDestroy {
         return;
       }
 
-      this.tasksService.getTask(task_type, task_id)
+      this.getTasksSubscription = this.tasksService.getTask(task_type, task_id)
         .subscribe(
-          task => this.task = task,
-          response => {
-            if (response.status === 404) {
-              // Navigate to 404 Not Found
-            }
-          });
+        task => this.task = task,
+        response => {
+          if (response.status === 404) {
+            // Navigate to 404 Not Found
+          }
+        });
     });
   }
 
-  addTask(form) {
+  addTask(task) {
     let result;
-    if (form.state === 'pending') {
+
+    // Setting the add_task_path based on the task's state
+    if (task.state === 'pending') {
       this.add_task_path = 'pending';
-    } else if (form.state === 'in_progress') {
+    } else if (task.state === 'in_progress') {
       this.add_task_path = 'in_progress';
     } else {
       this.add_task_path = 'completed';
@@ -69,28 +72,31 @@ export class TaskFormComponent implements OnInit, OnDestroy {
 
     this.route.params.subscribe((res) => {
       const current_task_type = res.task_type;
-      if (form.id && current_task_type === this.add_task_path) {
-        result = this.tasksService.updateTask(this.add_task_path, form, form.id);
-      } else if (form.id) {
-        this.tasksService.deleteTask(current_task_type, form.id)
-        .subscribe(null, err => {
-          console.log(err);
-        });
-        delete(form.id); // to add new task
-        result = this.tasksService.addTask(this.add_task_path, form);
+      if (task.id && current_task_type === this.add_task_path) {
+        result = this.tasksService.updateTask(this.add_task_path, task, task.id);
+      } else if (task.id) {
+        this.tasksService.deleteTask(current_task_type, task.id)
+          .subscribe(null, err => {
+            console.log(err);
+          });
+        delete (task.id); // to add a new task in a new category
+        result = this.tasksService.addTask(this.add_task_path, task);
       } else {
-        result = this.tasksService.addTask(this.add_task_path, form);
+        result = this.tasksService.addTask(this.add_task_path, task);
       }
     });
 
+    // Route to tasks page after task addition or updation
     result.subscribe(data => this.router.navigate(['tasks']));
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // Unsubscribe
+    if (this.getTasksSubscription) {
+      this.getTasksSubscription.unsubscribe();
+    }
+    if (this.getTaskSubscription) {
+      this.getTaskSubscription.unsubscribe();
+    }
   }
-
 }
-
-
-
