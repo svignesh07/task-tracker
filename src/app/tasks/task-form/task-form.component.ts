@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -10,12 +10,12 @@ import { TasksService } from './../tasks.service';
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.scss']
 })
-export class TaskFormComponent implements OnInit {
+export class TaskFormComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   title: string;
   task: Task = new Task();
-  add_task_path: string = "";
+  add_task_path = '';
   private subscription: any;
 
   constructor(
@@ -37,18 +37,20 @@ export class TaskFormComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.route.params.subscribe(params => {
 
-      var task_id = params['id'],
-          task_type = params['task_type'];
+      const task_id = params['id']
+          , task_type = params['task_type'];
+
       this.title = task_id ? 'Edit Task' : 'New Task';
 
-      if (!task_id)
+      if (!task_id) {
         return;
+      }
 
       this.tasksService.getTask(task_type, task_id)
         .subscribe(
           task => this.task = task,
           response => {
-            if (response.status == 404) {
+            if (response.status === 404) {
               // Navigate to 404 Not Found
             }
           });
@@ -56,27 +58,28 @@ export class TaskFormComponent implements OnInit {
   }
 
   addTask(form) {
-    var result;
-    if(form.state == "pending") {
-      this.add_task_path = "pending";
-    } else if (form.state == "in_progress") {
-      this.add_task_path = "in_progress";
+    let result;
+    if (form.state === 'pending') {
+      this.add_task_path = 'pending';
+    } else if (form.state === 'in_progress') {
+      this.add_task_path = 'in_progress';
     } else {
-      this.add_task_path = "completed";
+      this.add_task_path = 'completed';
     }
 
-    this.route.params.subscribe((res)=> {
-      var current_task_type = res.task_type;
-      if (form.id && current_task_type == this.add_task_path) {
+    this.route.params.subscribe((res) => {
+      const current_task_type = res.task_type;
+      if (form.id && current_task_type === this.add_task_path) {
         result = this.tasksService.updateTask(this.add_task_path, form, form.id);
       } else if (form.id) {
         this.tasksService.deleteTask(current_task_type, form.id)
         .subscribe(null, err => {
           console.log(err);
         });
-        result = this.tasksService.addTask(this.add_task_path,form);
+        delete(form.id); // to add new task
+        result = this.tasksService.addTask(this.add_task_path, form);
       } else {
-        result = this.tasksService.addTask(this.add_task_path,form);
+        result = this.tasksService.addTask(this.add_task_path, form);
       }
     });
 

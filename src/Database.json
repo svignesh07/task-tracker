@@ -1,50 +1,5 @@
 {
-  "pending": [
-    {
-      "id": 1,
-      "name": "Buy Groceries",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n",
-      "estimate": "2",
-      "state": "pending"
-    },
-    {
-      "id": 2,
-      "name": "Learn Angular 4",
-      "description": "Learn about Pipes ||",
-      "estimate": "3",
-      "state": "pending"
-    }
-  ],
-  "in_progress": [
-    {
-      "id": 1,
-      "name": "Buy Groceries in progress",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n",
-      "estimate": "2",
-      "state": "in_progress"
-    },
-    {
-      "id": 2,
-      "name": "Learn Angular 4 in progress",
-      "description": "Learn about Pipes ||",
-      "estimate": "3",
-      "state": "in_progress"
-    }
-  ],
-  "completed": [
-    {
-      "id": 1,
-      "name": "Buy Groceries completed",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n",
-      "estimate": "2",
-      "state": "completed"
-    },
-    {
-      "id": 2,
-      "name": "Learn Angular 4 completed",
-      "description": "Learn about Pipes ||",
-      "estimate": "3",
-      "state": "completed"
-    }
-  ]
+  "pending": [],
+  "in_progress": [],
+  "completed": []
 }

@@ -2,7 +2,7 @@
 <div class="flex-box">
   <div class="medium-4 columns card-container callout ml1">
     <h5>Pending <span class="label float-right">Total time: {{ pending_hours }} hours</span></h5>
-    <div *ngIf="pending_tasks.length == 0 else showPendingtasks">
+    <div class="no_tasks" *ngIf="pending_tasks.length == 0 else showPendingtasks">
       No pending tasks
     </div>
     <ng-template #showPendingtasks>
@@ -28,8 +28,8 @@
 
 
   <div class="medium-4 columns card-container callout ml1">
-    <h5>In Progress  <span class="label float-right">Total time: {{ in_progress_hours }} hours</span></h5>
-    <div *ngIf="in_progress_tasks.length == 0 else showInProgresstasks">
+    <h5>In Progress <span class="label float-right">Total time: {{ in_progress_hours }} hours</span></h5>
+    <div class="no_tasks" *ngIf="in_progress_tasks.length == 0 else showInProgresstasks">
       No tasks in progress
     </div>
     <ng-template #showInProgresstasks>
@@ -54,8 +54,8 @@
   </div>
   <br>
   <div class="medium-4 columns card-container callout ml1 mr1">
-    <h5>Completed   <span class="label float-right">Total time: {{ completed_hours }} hours</span></h5>
-    <div *ngIf="completed_tasks.length == 0 else showCompletedtasks">
+    <h5>Completed <span class="label float-right">Total time: {{ completed_hours }} hours</span></h5>
+    <div class="no_tasks" *ngIf="completed_tasks.length == 0 else showCompletedtasks">
       No completed tasks to show
     </div>
     <ng-template #showCompletedtasks>

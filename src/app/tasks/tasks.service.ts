@@ -9,33 +9,34 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class TasksService {
 
-  private url: string = "http://localhost:3000/";
+  private baseUrl: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    this.baseUrl = 'http://localhost:3000/';
+  }
 
-  getTasks(path){
-    return this.http.get(`${this.url}${path}`)
+  getTasks(path) {
+    return this.http.get(`${this.baseUrl}${path}`)
       .map(res => res.json());
   }
 
-  getTask(path: string, id){
-    return this.http.get(`${this.url}${path}/${id}`)
+  getTask(path: string, id) {
+    return this.http.get(`${this.baseUrl}${path}/${id}`)
       .map(res => res.json());
   }
 
-  addTask(path: string, task: Object = {}){
-    return this.http.post(`${this.url}${path}`, task)
+  addTask(path: string, task: Object = {}) {
+    return this.http.post(`${this.baseUrl}${path}`, task)
       .map(res => res.json());
   }
 
-  updateTask(path: string, task, id){
-    return this.http.put(`${this.url}${path}/${id}`, task)
+  updateTask(path: string, task, id) {
+    return this.http.put(`${this.baseUrl}${path}/${id}`, task)
       .map(res => res.json());
   }
 
-  deleteTask(path: string, id){
-    debugger;
-    return this.http.delete(`${this.url}${path}/${id}`)
+  deleteTask(path: string, id) {
+    return this.http.delete(`${this.baseUrl}${path}/${id}`)
       .map(res => res.json());
   }
 

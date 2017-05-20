@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from './tasks.service';
-import { Task } from "./task";
+import { Task } from './task';
 
 @Component({
   selector: 'app-tasks',
@@ -10,16 +10,16 @@ import { Task } from "./task";
 })
 export class TasksComponent implements OnInit {
 
-  private states: any[] = ["pending", "in_progress", "completed"];
-  private tasks_path = "db";
-  private all_tasks: any[] = []
-  private pending_tasks: Task[] = [];
-  private in_progress_tasks: Task[] = [];
-  private completed_tasks: Task[] = [];
-  private pending_hours: number = 0;
-  private in_progress_hours: number = 0;
-  private completed_hours: number = 0;
-  delete_task_path: string = "";
+  private states: any[] = ['pending', 'in_progress', 'completed'];
+  private tasks_path = 'db';
+  all_tasks: any[] = [];
+  pending_tasks: Task[] = [];
+  in_progress_tasks: Task[] = [];
+  completed_tasks: Task[] = [];
+  pending_hours = 0;
+  in_progress_hours = 0;
+  completed_hours = 0;
+  delete_task_path = '';
 
   constructor(private tasksService: TasksService) { }
 
@@ -38,25 +38,25 @@ export class TasksComponent implements OnInit {
 
   deleteTask(task) {
     let array_type: any[];
-    if(task.state == "pending") {
+    if (task.state === 'pending') {
       array_type = this.pending_tasks;
-      this.delete_task_path = "pending";
-    } else if (task.state == "in_progress") {
+      this.delete_task_path = 'pending';
+    } else if (task.state === 'in_progress') {
       array_type = this.in_progress_tasks;
-      this.delete_task_path = "in_progress";
+      this.delete_task_path = 'in_progress';
     } else {
       array_type = this.completed_tasks;
-      this.delete_task_path = "completed";
+      this.delete_task_path = 'completed';
     }
 
-    if (confirm("Are you sure you want to delete " + task.name + "?")) {
-      var index = array_type.indexOf(task);
+    if (confirm('Are you sure you want to delete - ' + task.name + '?')) {
+      const index = array_type.indexOf(task);
       array_type.splice(index, 1);
 
       this.tasksService.deleteTask(this.delete_task_path, task.id)
         .subscribe(null,
         err => {
-          alert("Could not delete task.");
+          alert('Could not delete task.');
           // Add back the task in the array
           array_type.splice(index, 0, task);
         },
@@ -69,10 +69,10 @@ export class TasksComponent implements OnInit {
   }
 
   calculateHours(array) {
-    let estimate: number = 0;
+    let estimate = 0;
 
-    for (var i = 0; i < array.length; i++) {
-      estimate += parseInt(array[i].estimate);
+    for (let i = 0; i < array.length; i++) {
+      estimate += parseInt(array[i].estimate, 10);
     }
     return estimate;
   }
