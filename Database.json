@@ -1,0 +1,43 @@
+{
+  "pending": [
+    {
+      "name": "ass",
+      "description": "x",
+      "estimate": 2,
+      "state": "pending",
+      "id": 3
+    },
+    {
+      "name": "231",
+      "description": "8",
+      "estimate": 8,
+      "state": "pending",
+      "id": 5
+    }
+  ],
+  "in_progress": [
+    {
+      "name": "ass",
+      "description": "x",
+      "estimate": 2,
+      "state": "in_progress",
+      "id": 3
+    },
+    {
+      "name": "Adding a new task",
+      "description": "Description",
+      "estimate": 8,
+      "state": "in_progress",
+      "id": 4
+    }
+  ],
+  "completed": [
+    {
+      "id": 2,
+      "name": "231",
+      "description": "Karle tu bhi ijaazat\n",
+      "estimate": 8,
+      "state": "completed"
+    }
+  ]
+}

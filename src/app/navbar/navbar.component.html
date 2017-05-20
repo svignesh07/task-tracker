@@ -1,12 +1,13 @@
 <div class="top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">Task Tracker</li>
+      <li><a routerLink=""><strong>Task Tracker</strong></a></li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
-      <li><a href="#">Tasks</a></li>
+      <li routerLinkActive="active"><a routerLink="/tasks/new">Add Task</a></li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/tasks" routerLinkActive="active">Tasks</a></li>
     </ul>
   </div>
 </div>

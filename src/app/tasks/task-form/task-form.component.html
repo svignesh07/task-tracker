@@ -1,0 +1,41 @@
+<form [formGroup]="form" (ngSubmit)="addTask(form.value)">
+  <div class="form-container">
+    <div class="row columns">
+      <h1>{{ title }}</h1>
+      <input type="hidden" [(ngModel)]="task.id" formControlName="id">
+      <label>Name
+        <input type="text" [(ngModel)]="task.name" formControlName="name">
+      </label>
+      <div class="alert" *ngIf="!form.controls['name'].valid && form.controls['name'].touched">
+        Please enter name of the task
+      </div>
+      <label>Description
+        <textarea [(ngModel)]="task.description" formControlName="description"></textarea>
+      </label>
+      <div class="alert" *ngIf="!form.controls['description'].valid && form.controls['description'].touched">
+        Please enter task's description
+      </div>
+
+      <label>Estimate (Hours)
+        <input type="number" [(ngModel)]="task.estimate" formControlName="estimate">
+      </label>
+      <div class="alert" *ngIf="!form.controls['estimate'].valid && form.controls['estimate'].touched">
+        Please enter task's estimate
+      </div>
+
+      <label>State
+        <select type="text" [(ngModel)]="task.state" formControlName="state">
+          <option value="pending">Pending</option>
+          <option value="in_progress">In progress</option>
+          <option value="completed">Completed</option>
+        </select>
+      </label>
+      <div class="alert" *ngIf="!form.controls['state'].valid && form.controls['state'].touched">
+        Please select a state for the task
+      </div>
+
+      <input type="submit" class="button expanded" value="Save" [disabled]="!form.valid">
+    </div>
+  </div>
+
+</form>

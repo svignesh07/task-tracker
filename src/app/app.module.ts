@@ -7,16 +7,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
+import { TasksRouting } from "./tasks/tasks.routing";
+import { TasksModule } from "./tasks/tasks.module";
+import { HomeComponent } from './home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TasksModule,
+    TasksRouting
   ],
   providers: [],
   bootstrap: [AppComponent]

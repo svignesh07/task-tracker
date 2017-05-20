@@ -1,0 +1,81 @@
+<br>
+<div class="flex-box">
+  <div class="medium-4 columns card-container callout ml1">
+    <h5>Pending <span class="label float-right">Total time: {{ pending_hours }} hours</span></h5>
+    <div *ngIf="pending_tasks.length == 0 else showPendingtasks">
+      No pending tasks
+    </div>
+    <ng-template #showPendingtasks>
+      <div class="card" *ngFor="let task of pending_tasks">
+        <div class="card-divider">
+          <h6>{{ task.name }}</h6>
+        </div>
+        <div class="card-section">
+          <p>{{ task.description }}</p>
+        </div>
+        <div class="card-section">
+          <div class="label">{{ task.estimate }} hours</div>
+          <a (click)="deleteTask(task)" class="button alert small float-right ml1">
+            Delete
+          </a>
+          <a [routerLink]="['/tasks/pending', task.id]" class="button success small float-right">
+            Edit
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+
+  <div class="medium-4 columns card-container callout ml1">
+    <h5>In Progress  <span class="label float-right">Total time: {{ in_progress_hours }} hours</span></h5>
+    <div *ngIf="in_progress_tasks.length == 0 else showInProgresstasks">
+      No tasks in progress
+    </div>
+    <ng-template #showInProgresstasks>
+      <div class="card" *ngFor="let task of in_progress_tasks">
+        <div class="card-divider">
+          <h6>{{ task.name }}</h6>
+        </div>
+        <div class="card-section">
+          <p>{{ task.description }}</p>
+        </div>
+        <div class="card-section">
+          <div class="label">{{ task.estimate }} hours</div>
+          <a (click)="deleteTask(task)" class="button alert small float-right ml1">
+            Delete
+          </a>
+          <a [routerLink]="['/tasks/in_progress', task.id]" class="button success small float-right">
+            Edit
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <br>
+  <div class="medium-4 columns card-container callout ml1 mr1">
+    <h5>Completed   <span class="label float-right">Total time: {{ completed_hours }} hours</span></h5>
+    <div *ngIf="completed_tasks.length == 0 else showCompletedtasks">
+      No completed tasks to show
+    </div>
+    <ng-template #showCompletedtasks>
+      <div class="card" *ngFor="let task of completed_tasks">
+        <div class="card-divider">
+          <h6>{{ task.name }}</h6>
+        </div>
+        <div class="card-section">
+          <p>{{ task.description }}</p>
+        </div>
+        <div class="card-section">
+          <div class="label">{{ task.estimate }} hours</div>
+          <a (click)="deleteTask(task)" class="button alert small float-right ml1">
+            Delete
+          </a>
+          <a [routerLink]="['/tasks/completed', task.id]" class="button success small float-right">
+            Edit
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
