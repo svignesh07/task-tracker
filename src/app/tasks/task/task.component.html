@@ -1,0 +1,18 @@
+
+<div class="card" *ngFor="let task of tasks">
+  <div class="card-divider">
+    <h6>{{ task.name }}</h6>
+  </div>
+  <div class="card-section">
+    <p>{{ task.description }}</p>
+  </div>
+  <div class="card-section">
+    <div class="label">{{ task.estimate }} hours</div>
+    <a (click)="deleteTask(task)" class="button alert small float-right ml1">
+      Delete
+    </a>
+    <a [routerLink]="['/tasks', category, task.id]" class="button success small float-right">
+      Edit
+    </a>
+  </div>
+</div>

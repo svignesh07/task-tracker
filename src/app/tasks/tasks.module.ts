@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { TasksComponent } from './tasks.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TasksService } from './tasks.service';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TasksService } from './tasks.service';
   ],
   declarations: [
     TasksComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    TaskComponent
   ],
   exports: [
     TasksComponent

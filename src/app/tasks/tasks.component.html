@@ -9,23 +9,7 @@
     </div>
 
     <ng-template #showPendingtasks>
-      <div class="card" *ngFor="let task of pending_tasks">
-        <div class="card-divider">
-          <h6>{{ task.name }}</h6>
-        </div>
-        <div class="card-section">
-          <p>{{ task.description }}</p>
-        </div>
-        <div class="card-section">
-          <div class="label">{{ task.estimate }} hours</div>
-          <a (click)="deleteTask(task)" class="button alert small float-right ml1">
-            Delete
-          </a>
-          <a [routerLink]="['/tasks/pending', task.id]" class="button success small float-right">
-            Edit
-          </a>
-        </div>
-      </div>
+      <app-task [tasks]="pending_tasks" [category]="'pending'" (taskDeleted) = "onTaskDelete()"></app-task>
     </ng-template>
   </div>
 
@@ -36,23 +20,7 @@
       No tasks in progress
     </div>
     <ng-template #showInProgresstasks>
-      <div class="card" *ngFor="let task of in_progress_tasks">
-        <div class="card-divider">
-          <h6>{{ task.name }}</h6>
-        </div>
-        <div class="card-section">
-          <p>{{ task.description }}</p>
-        </div>
-        <div class="card-section">
-          <div class="label">{{ task.estimate }} hours</div>
-          <a (click)="deleteTask(task)" class="button alert small float-right ml1">
-            Delete
-          </a>
-          <a [routerLink]="['/tasks/in_progress', task.id]" class="button success small float-right">
-            Edit
-          </a>
-        </div>
-      </div>
+      <app-task [tasks]="in_progress_tasks" [category]="'in_progress'" (taskDeleted) = "onTaskDelete()"></app-task>
     </ng-template>
   </div>
 
@@ -63,23 +31,7 @@
       No completed tasks to show
     </div>
     <ng-template #showCompletedtasks>
-      <div class="card" *ngFor="let task of completed_tasks">
-        <div class="card-divider">
-          <h6>{{ task.name }}</h6>
-        </div>
-        <div class="card-section">
-          <p>{{ task.description }}</p>
-        </div>
-        <div class="card-section">
-          <div class="label">{{ task.estimate }} hours</div>
-          <a (click)="deleteTask(task)" class="button alert small float-right ml1">
-            Delete
-          </a>
-          <a [routerLink]="['/tasks/completed', task.id]" class="button success small float-right">
-            Edit
-          </a>
-        </div>
-      </div>
+      <app-task [tasks]="completed_tasks" [category]="'completed'" (taskDeleted) = "onTaskDelete()"></app-task>
     </ng-template>
   </div>
 </div>

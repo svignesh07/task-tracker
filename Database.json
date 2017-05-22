@@ -4,15 +4,8 @@
       "id": 1,
       "name": "Groceries shopping",
       "description": "Buy milk, bread and butter",
-      "estimate": 12,
-      "state": "pending"
-    },
-    {
-      "name": "new pending task",
-      "description": "Testing",
       "estimate": 1,
-      "state": "pending",
-      "id": 2
+      "state": "pending"
     }
   ],
   "in_progress": [
