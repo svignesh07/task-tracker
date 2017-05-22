@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Rx';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnInit, OnDestroy {
   deleteTaskSubscription: Subscription;
   private delete_task_path: string;
 
@@ -46,7 +46,7 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if(this.deleteTaskSubscription) {
+    if (this.deleteTaskSubscription) {
       this.deleteTaskSubscription.unsubscribe();
     }
   }
