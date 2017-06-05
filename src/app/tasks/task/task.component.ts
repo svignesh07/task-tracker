@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { TasksService } from './../tasks.service';
 import { Subscription } from 'rxjs/Rx';
 
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Rx';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
-export class TaskComponent implements OnInit, OnDestroy {
+export class TaskComponent implements OnDestroy {
   deleteTaskSubscription: Subscription;
   private delete_task_path: string;
 
@@ -17,10 +17,6 @@ export class TaskComponent implements OnInit, OnDestroy {
   @Output() taskDeleted: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private tasksService: TasksService) {}
-
-  ngOnInit() {
-
-  }
 
   deleteTask(task) {
     // Setting the delete_task_path based on the task's state

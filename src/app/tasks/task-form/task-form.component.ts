@@ -34,7 +34,6 @@ export class TaskFormComponent implements OnInit, OnDestroy {
     });
   }
 
-
   ngOnInit() {
     this.getTaskSubscription = this.route.params.subscribe(params => {
 
