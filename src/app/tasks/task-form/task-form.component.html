@@ -3,12 +3,12 @@
     <div class="row columns">
       <h1>{{ title }}</h1>
       <input type="hidden" [(ngModel)]="task.id" formControlName="id">
-      <label>Name
-        <input type="text" [(ngModel)]="task.name" formControlName="name">
+      <label>title
+        <input type="text" [(ngModel)]="task.title" formControlName="title">
       </label>
-      <div class="alert" *ngIf="!form.controls['name'].valid && form.controls['name'].touched">
-        Please enter name of the task
-      </div>
+<!--       <div class="alert" *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
+        Please enter title of the task
+      </div> -->
       <label>Description
         <textarea [(ngModel)]="task.description" formControlName="description"></textarea>
       </label>
@@ -16,25 +16,34 @@
         Please enter task's description
       </div>
 
-      <label>Estimate (Hours)
-        <input type="number" [(ngModel)]="task.estimate" formControlName="estimate">
+<!--       <label>Likes
+        <input type="number" [(ngModel)]="task.likes" formControlName="likes">
       </label>
-      <div class="alert" *ngIf="!form.controls['estimate'].valid && form.controls['estimate'].touched">
-        Please enter task's estimate
-      </div>
+      <div class="alert" *ngIf="!form.controls['likes'].valid && form.controls['likes'].touched">
+        Please enter task's likes
+      </div> -->
 
-      <label>State
-        <select type="text" [(ngModel)]="task.state" formControlName="state">
-          <option value="pending">Pending</option>
-          <option value="in_progress">In progress</option>
-          <option value="completed">Completed</option>
+      <label>Language
+        <select type="text" [(ngModel)]="task.language" formControlName="language">
+          <option value="english">English</option>
+          <option value="portuguese">Portuguese</option>
+          <option value="spanish">Spanish</option>
+          <option value="french">French</option>
         </select>
       </label>
-      <div class="alert" *ngIf="!form.controls['state'].valid && form.controls['state'].touched">
-        Please select a state for the task
+<!--       <div class="alert" *ngIf="!form.controls['language'].valid && form.controls['language'].touched">
+        Please select a language for the joke
       </div>
+ -->
 
-      <input type="submit" class="button expanded" value="Save" [disabled]="!form.valid">
+      <label>Category
+        <input type="text" class="category" [(ngModel)]="task.category" formControlName="category">
+      </label>
+<!--       <div class="alert" *ngIf="!form.controls['category'].valid && form.controls['category'].touched">
+        Please enter joke's category
+      </div> -->
+
+      <input type="submit" class="button expanded" value="Save">
     </div>
   </div>
 

@@ -1,21 +1,26 @@
 {
-  "pending": [
+  "english": [
     {
-      "id": 1,
-      "name": "Groceries shopping",
-      "description": "Buy milk, bread and butter",
-      "estimate": 1,
-      "state": "pending"
+      "animal": [
+        {
+        "name": "Test name",
+        "description": "A blonde, a redhead, and a brunette were all lost in the desert. They found a lamp and rubbed it. A genie popped out and granted them each one wish. The redhead wished to be back home. Poof! She was back home. The brunette wished to be at home with her family. Poof! She was back home with her family. The blonde said, \"Awwww, I wish my friends were here.",
+        "likes": 100,
+        "category": "blonde",
+        "id": 1
+        }
+      ],
+      "blonde": [
+        {
+        "name": "Test name",
+        "description": "A blonde, a redhead, and a brunette were all lost in the desert. They found a lamp and rubbed it. A genie popped out and granted them each one wish. The redhead wished to be back home. Poof! She was back home. The brunette wished to be at home with her family. Poof! She was back home with her family. The blonde said, \"Awwww, I wish my friends were here.",
+        "likes": 100,
+        "category": "blonde",
+        "id": 1
+        }
+      ]
     }
   ],
-  "in_progress": [
-    {
-      "name": "Task tracker",
-      "description": "Working on task tracker assignment",
-      "estimate": 2.5,
-      "state": "in_progress",
-      "id": 1
-    }
-  ],
-  "completed": []
+  "portuguese": {},
+  "spanish": {}
 }

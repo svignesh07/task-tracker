@@ -9,13 +9,16 @@ import { TaskFormComponent } from './task-form/task-form.component';
 import { TasksService } from './tasks.service';
 import { TaskComponent } from './task/task.component';
 
+import { routing } from './tasks.routing';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   declarations: [
     TasksComponent,

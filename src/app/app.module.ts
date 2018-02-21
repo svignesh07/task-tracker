@@ -7,8 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-import { TasksRouting } from './tasks/tasks.routing';
-import { TasksModule } from './tasks/tasks.module';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -21,9 +19,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    TasksModule,
-    TasksRouting
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: 'tasks', loadChildren: 'app/tasks/tasks.module#TasksModule' }
 ];
 
 @NgModule({

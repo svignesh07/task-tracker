@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class TasksService {
@@ -12,7 +9,7 @@ export class TasksService {
   private baseUrl: string;
 
   constructor(private http: Http) {
-    this.baseUrl = 'http://localhost:3000/';
+    this.baseUrl = 'https://ionic2-jokes.firebaseio.com/jokes/';
   }
 
   getTasks(path) {
@@ -26,7 +23,7 @@ export class TasksService {
   }
 
   addTask(path: string, task: Object = {}) {
-    return this.http.post(`${this.baseUrl}${path}`, task)
+    return this.http.post(`${this.baseUrl}${path}.json`, task)
       .map(res => res.json());
   }
 

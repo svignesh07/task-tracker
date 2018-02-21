@@ -27,10 +27,11 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   ) {
     this.form = fb.group({
       id: [null, ''],
-      name: ['', Validators.required],
+      title: ['', null],
       description: ['', Validators.required],
-      estimate: ['', Validators.required],
-      state: ['', Validators.required],
+      // likes: ['', Validators.required],
+      language: ['', Validators.required],
+      category: ['', Validators.required]
     });
   }
 
@@ -61,12 +62,14 @@ export class TaskFormComponent implements OnInit, OnDestroy {
     let result;
 
     // Setting the add_task_path based on the task's state
-    if (task.state === 'pending') {
-      this.add_task_path = 'pending';
-    } else if (task.state === 'in_progress') {
-      this.add_task_path = 'in_progress';
+    if (task.language === 'english') {
+      this.add_task_path = `english/${task.category}`;
+    } else if (task.language === 'portuguese') {
+      this.add_task_path = `portuguese/${task.category}`;
+    } else if (task.language === 'spanish') {
+      this.add_task_path = `spanish/${task.category}`;
     } else {
-      this.add_task_path = 'completed';
+       this.add_task_path = `french/${task.category}`;
     }
 
     this.route.params.subscribe((res) => {
@@ -79,14 +82,20 @@ export class TaskFormComponent implements OnInit, OnDestroy {
             console.log(err);
           });
         delete (task.id); // to add a new task in a new category
+        delete (task.language); // to add a new task in a new category
+        delete (task.category); // to add a new task in a new category
         result = this.tasksService.addTask(this.add_task_path, task);
       } else {
+        delete (task.language); // to add a new task in a new category
+        delete (task.category); // to add a new task in a new category
         result = this.tasksService.addTask(this.add_task_path, task);
       }
     });
 
     // Route to tasks page after task addition or updation
-    result.subscribe(data => this.router.navigate(['tasks']));
+    result.subscribe(data => {
+      console.log(data);
+    });
   }
 
   ngOnDestroy() {
